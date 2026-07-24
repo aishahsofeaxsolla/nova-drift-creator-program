@@ -1,0 +1,11 @@
+/* Xsolla UI Toolkit v2 — Elevation / shadow tokens.
+   Neutral, near-black shadows (rgba 7,7,8) — no colored glows. */
+
+:root {
+  --xui-shadow-active: 0px 1px 2px rgba(7, 7, 8, 0.2), 0px 1px 3px 1px rgba(7, 7, 8, 0.1);
+  --xui-shadow-surface: 0px 1px 2px rgba(7, 7, 8, 0.2), 0px 2px 6px 2px rgba(7, 7, 8, 0.1);
+  --xui-shadow-surface-hover: 0px 4px 8px 3px rgba(7, 7, 8, 0.1), 0px 1px 3px rgba(7, 7, 8, 0.2);
+  --xui-shadow-popover: 0px 6px 10px 4px rgba(7, 7, 8, 0.1), 0px 2px 3px rgba(7, 7, 8, 0.2);
+  --xui-shadow-modal: 0px 8px 12px 6px rgba(7, 7, 8, 0.1), 0px 4px 4px rgba(7, 7, 8, 0.2);
+  --xui-shadow-context-menu: 0px 4px 12px rgba(0, 0, 0, 0.15);
+}

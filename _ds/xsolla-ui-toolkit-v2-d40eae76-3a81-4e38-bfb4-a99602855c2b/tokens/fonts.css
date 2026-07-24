@@ -1,0 +1,19 @@
+/* Xsolla UI Toolkit v2 — Webfonts (Xsolla CDN)
+   Pilat Wide — B2C headings/display (600, 700, 800)
+   Pilat      — B2B headings/display (300, 400, 500, 600, 700, 800)
+   Aktiv Grotesk — body, all contexts (400, 500, 600) */
+
+@font-face{font-family:'Pilat Wide';src:url('https://cdn.xsolla.net/xsolla-ui-toolkit-prod/fonts/v1/pilat-wide/pilat-wide-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Pilat Wide';src:url('https://cdn.xsolla.net/xsolla-ui-toolkit-prod/fonts/v1/pilat-wide/pilat-wide-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Pilat Wide';src:url('https://cdn.xsolla.net/xsolla-ui-toolkit-prod/fonts/v1/pilat-wide/pilat-wide-800.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap}
+
+@font-face{font-family:'Pilat';src:url('https://cdn.xsolla.net/xsolla-ui-toolkit-prod/fonts/v1/pilat/pilat-300.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:'Pilat';src:url('https://cdn.xsolla.net/xsolla-ui-toolkit-prod/fonts/v1/pilat/pilat-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Pilat';src:url('https://cdn.xsolla.net/xsolla-ui-toolkit-prod/fonts/v1/pilat/pilat-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Pilat';src:url('https://cdn.xsolla.net/xsolla-ui-toolkit-prod/fonts/v1/pilat/pilat-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:'Pilat';src:url('https://cdn.xsolla.net/xsolla-ui-toolkit-prod/fonts/v1/pilat/pilat-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:'Pilat';src:url('https://cdn.xsolla.net/xsolla-ui-toolkit-prod/fonts/v1/pilat/pilat-800.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap}
+
+@font-face{font-family:'Aktiv Grotesk';src:url('https://cdn.xsolla.net/xsolla-ui-toolkit-prod/fonts/v1/aktiv-grotesk/latin/aktiv-grotesk-latin-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Aktiv Grotesk';src:url('https://cdn.xsolla.net/xsolla-ui-toolkit-prod/fonts/v1/aktiv-grotesk/latin/aktiv-grotesk-latin-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'Aktiv Grotesk';src:url('https://cdn.xsolla.net/xsolla-ui-toolkit-prod/fonts/v1/aktiv-grotesk/latin/aktiv-grotesk-latin-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}

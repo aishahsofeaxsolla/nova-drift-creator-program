@@ -1,0 +1,35 @@
+/* Xsolla UI Toolkit v2 — Typography tokens
+   Font families: Pilat Wide (B2C headings), Pilat (B2B headings), Aktiv Grotesk (body).
+   The exposed type scale is the B2C (consumer) context — Xsolla's default prototyping
+   surface. B2B / Pay Station / Presentation scales are documented in readme.md. */
+
+:root {
+  --xui-font-heading: 'Pilat Wide', 'Pilat', system-ui, sans-serif;   /* B2C display/headings */
+  --xui-font-heading-b2b: 'Pilat', 'Pilat Wide', system-ui, sans-serif; /* B2B display/headings */
+  --xui-font-body: 'Aktiv Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Weights */
+  --xui-weight-light: 300;
+  --xui-weight-regular: 400;
+  --xui-weight-medium: 500;
+  --xui-weight-semibold: 600;
+  --xui-weight-bold: 700;
+  --xui-weight-black: 800;
+
+  /* ── Type scale — B2C context (size / line-height / weight) ── */
+  --xui-display-size: 48px;   --xui-display-lh: 58px;   --xui-display-weight: 800;
+  --xui-h1-size: 40px;        --xui-h1-lh: 48px;        --xui-h1-weight: 700;
+  --xui-h2-size: 32px;        --xui-h2-lh: 38px;        --xui-h2-weight: 700;
+  --xui-h3-size: 28px;        --xui-h3-lh: 34px;        --xui-h3-weight: 700;
+  --xui-h4-size: 24px;        --xui-h4-lh: 28px;        --xui-h4-weight: 700;
+  --xui-h5-size: 20px;        --xui-h5-lh: 24px;        --xui-h5-weight: 700;
+
+  --xui-body-lg-size: 18px;   --xui-body-lg-lh: 24px;   --xui-body-lg-lh-para: 28px;
+  --xui-body-md-size: 16px;   --xui-body-md-lh: 20px;   --xui-body-md-lh-para: 24px;
+  --xui-body-sm-size: 14px;   --xui-body-sm-lh: 18px;   --xui-body-sm-lh-para: 22px;
+  --xui-body-xs-size: 12px;   --xui-body-xs-lh: 16px;   --xui-body-xs-lh-para: 18px;
+  --xui-body-xxs-size: 10px;  --xui-body-xxs-lh: 14px;
+
+  --xui-body-weight: 400;
+  --xui-body-accent-weight: 500;
+}

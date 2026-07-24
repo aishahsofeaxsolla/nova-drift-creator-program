@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nova Drift Creators — Xsolla Creator Program</title>
+<link rel="stylesheet" href="./_ds/xsolla-ui-toolkit-v2-d40eae76-3a81-4e38-bfb4-a99602855c2b/styles.css">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; }
+  a { color: var(--xui-control-link-primary); text-decoration: none; }
+  a:hover { color: var(--xui-control-link-primary-hover); }
+  @keyframes cp-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="./_ds/xsolla-ui-toolkit-v2-d40eae76-3a81-4e38-bfb4-a99602855c2b/_ds_bundle.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+
+<script type="text/plain" id="app-src">
+const { useState } = React;
+const { Button, Tag, Icon, Input, Select } = window.XsollaUIToolkitV2_d40eae;
+
+const STEPS = [
+  { num: "01", title: "Apply", body: "Tell us about your channel. Two minutes, no follower minimum, and no strings attached." },
+  { num: "02", title: "Get approved", body: "Our team reviews new creators every week. Most applicants hear back within five days." },
+  { num: "03", title: "Earn rewards", body: "Share your creator code, stream the game, and rack up points that turn into real rewards." },
+];
+
+const TIERS = [
+  {
+    name: "Bronze", icon: "star-solid", color: "#ffc380",
+    blurb: "For creators just getting started.",
+    perks: ["Your own creator code", "Exclusive in-game cosmetic pack", "Access to the private creator Discord", "Monthly community challenges"],
+  },
+  {
+    name: "Silver", icon: "trophy", color: "#99aeb2",
+    blurb: "For creators building real momentum.", popular: true,
+    perks: ["Everything in Bronze", "Game keys to run giveaways", "10% revenue share on your code", "Early access to new content"],
+  },
+  {
+    name: "Gold", icon: "crown-solid", color: "#d9ff66",
+    blurb: "For creators leading the charge.",
+    perks: ["Everything in Silver", "25% revenue share on your code", "Cash bonuses on milestones", "Featured on our official channels", "A direct line to the dev team"],
+  },
+];
+
+const FAQS = [
+  { q: "Do I need a minimum follower count?", a: "Nope. We care more about your community and your content than raw numbers. If you're active and you love the game, apply — we approve creators of every size." },
+  { q: "How and when do I get paid?", a: "Revenue share and cash bonuses are paid monthly via PayPal or bank transfer, as soon as you clear a $50 balance. You'll see a full breakdown in your creator dashboard." },
+  { q: "Which platforms can I stream on?", a: "Twitch, YouTube, and TikTok are all supported. You can link more than one channel to a single account and earn points across all of them." },
+  { q: "How do I move up a tier?", a: "Tiers are based on points you earn from views, watch time, and creator-code usage. We review everyone's tier at the start of each month, so a big stream can bump you up fast." },
+];
+
+const PLATFORM_OPTS = [
+  { value: "twitch", label: "Twitch" },
+  { value: "youtube", label: "YouTube" },
+  { value: "tiktok", label: "TikTok" },
+];
+
+const AUDIENCE_OPTS = [
+  { value: "u1k", label: "Under 1,000" },
+  { value: "1k", label: "1,000 – 10,000" },
+  { value: "10k", label: "10,000 – 50,000" },
+  { value: "50k", label: "50,000+" },
+];
+
+function Header() {
+  return (
+    <div style={{ display: "flex", alignItems: "center", gap: 24, padding: "0 40px", height: 68, borderBottom: "1px solid var(--xui-border-secondary)", position: "sticky", top: 0, zIndex: 20, background: "rgba(20,29,31,.85)", backdropFilter: "blur(12px)" }}>
+      <img src="assets/logos/logo-full-white.svg" height="24" alt="Xsolla" />
+      <div style={{ width: 1, height: 24, background: "var(--xui-border-secondary)" }}></div>
+      <span style={{ fontFamily: "var(--xui-font-heading)", fontWeight: 700, fontSize: 16, letterSpacing: ".02em" }}>Nova Drift Creators</span>
+      <div style={{ flex: 1 }}></div>
+      <div style={{ display: "flex", gap: 8, marginRight: 8 }}>
+        <a href="#how" style={{ padding: "8px 12px", borderRadius: 6, fontSize: 14, fontWeight: 500, color: "var(--xui-content-secondary)" }}>How it works</a>
+        <a href="#tiers" style={{ padding: "8px 12px", borderRadius: 6, fontSize: 14, fontWeight: 500, color: "var(--xui-content-secondary)" }}>Rewards</a>
+        <a href="#faq" style={{ padding: "8px 12px", borderRadius: 6, fontSize: 14, fontWeight: 500, color: "var(--xui-content-secondary)" }}>FAQ</a>
+      </div>
+      <a href="#apply"><Button tone="brand" size="md">Apply now</Button></a>
+    </div>
+  );
+}
+
+function Hero() {
+  return (
+    <div style={{ position: "relative", overflow: "hidden", padding: "120px 40px 128px" }}>
+      <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1600&q=80" alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(90deg,rgba(20,29,31,.96),rgba(20,29,31,.78) 48%,rgba(20,29,31,.35) 100%)" }}></div>
+      <div style={{ position: "relative", maxWidth: 1120, margin: "0 auto" }}>
+        <div style={{ maxWidth: 640 }}>
+          <div style={{ display: "flex", gap: 8, marginBottom: 24 }}>
+            <Tag tone="brand" size="md">Creator Program</Tag>
+            <Tag tone="brandExtra" size="md" outlined>Now accepting</Tag>
+          </div>
+          <h1 style={{ fontFamily: "var(--xui-font-heading)", fontWeight: 800, fontSize: 64, lineHeight: 1.02, letterSpacing: "-.01em", margin: "0 0 20px" }}>Earn rewards<br />for playing</h1>
+          <p style={{ fontSize: 20, lineHeight: 1.5, color: "var(--xui-content-secondary)", maxWidth: 520, margin: "0 0 32px" }}>Turn your streams into gear, cash, and clout. Join the Nova Drift Creator Program and get paid to play the game your community already loves.</p>
+          <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+            <a href="#apply"><Button tone="brand" size="xl">Apply now</Button></a>
+            <a href="#tiers"><Button variant="secondary" tone="mono" size="xl">See rewards</Button></a>
+          </div>
+          <div style={{ display: "flex", gap: 32, marginTop: 44 }}>
+            <div><div style={{ fontFamily: "var(--xui-font-heading)", fontWeight: 800, fontSize: 28, color: "#d9ff66" }}>2,400+</div><div style={{ fontSize: 14, color: "var(--xui-content-tertiary)" }}>active creators</div></div>
+            <div><div style={{ fontFamily: "var(--xui-font-heading)", fontWeight: 800, fontSize: 28, color: "#d9ff66" }}>$180K</div><div style={{ fontSize: 14, color: "var(--xui-content-tertiary)" }}>paid out last season</div></div>
+            <div><div style={{ fontFamily: "var(--xui-font-heading)", fontWeight: 800, fontSize: 28, color: "#d9ff66" }}>5 days</div><div style={{ fontSize: 14, color: "var(--xui-content-tertiary)" }}>average approval</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SectionEyebrow({ children }) {
+  return <div style={{ fontSize: 14, fontWeight: 600, letterSpacing: ".12em", textTransform: "uppercase", color: "var(--xui-content-brand-secondary)", marginBottom: 12 }}>{children}</div>;
+}
+
+function HowItWorks() {
+  return (
+    <div id="how" style={{ maxWidth: 1120, margin: "0 auto", padding: "96px 40px" }}>
+      <div style={{ textAlign: "center", marginBottom: 56 }}>
+        <SectionEyebrow>How it works</SectionEyebrow>
+        <h2 style={{ fontFamily: "var(--xui-font-heading)", fontWeight: 700, fontSize: 40, margin: 0 }}>Three steps to your first reward</h2>
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24 }}>
+        {STEPS.map(step => (
+          <div key={step.num} style={{ background: "var(--xui-bg-primary)", border: "1px solid var(--xui-border-secondary)", borderRadius: 12, padding: 32 }}>
+            <div style={{ fontFamily: "var(--xui-font-heading)", fontWeight: 800, fontSize: 44, lineHeight: 1, color: "#d9ff66", marginBottom: 20 }}>{step.num}</div>
+            <h3 style={{ fontFamily: "var(--xui-font-heading)", fontWeight: 700, fontSize: 24, margin: "0 0 10px" }}>{step.title}</h3>
+            <p style={{ fontSize: 16, lineHeight: 1.5, color: "var(--xui-content-secondary)", margin: 0 }}>{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function TierCard({ tier }) {
+  return (
+    <div style={{
+      height: "100%", boxSizing: "border-box", position: "relative",
+      background: "var(--xui-bg-secondary)", borderRadius: 12, padding: 32,
+      border: `1px solid ${tier.popular ? "var(--xui-border-brand)" : "var(--xui-border-secondary)"}`,
+      boxShadow: tier.popular ? "0 0 0 1px var(--xui-border-brand)" : "none",
+    }}>
+      {tier.popular && (
+        <div style={{ position: "absolute", top: -13, left: "50%", transform: "translateX(-50%)" }}>
+          <Tag tone="brand" size="sm">Most popular</Tag>
+        </div>
+      )}
+      <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+        <div style={{ width: 44, height: 44, borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center", background: "var(--xui-bg-secondary)", border: "1px solid var(--xui-border-secondary)" }}>
+          <Icon name={tier.icon} size="24px" color={tier.color} />
+        </div>
+        <h3 style={{ fontFamily: "var(--xui-font-heading)", fontWeight: 700, fontSize: 24, margin: 0 }}>{tier.name}</h3>
+      </div>
+      <p style={{ fontSize: 15, color: "var(--xui-content-secondary)", margin: "0 0 24px", minHeight: 44 }}>{tier.blurb}</p>
+      <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+        {tier.perks.map(perk => (
+          <div key={perk} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+            <Icon name="check-solid" size="18px" color="var(--xui-content-brand-secondary)" style={{ flex: "none", marginTop: 1 }} />
+            <span style={{ fontSize: 15, lineHeight: 1.4, color: "var(--xui-content-primary)" }}>{perk}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function Tiers() {
+  return (
+    <div id="tiers" style={{ background: "var(--xui-bg-primary)", borderTop: "1px solid var(--xui-border-secondary)", borderBottom: "1px solid var(--xui-border-secondary)" }}>
+      <div style={{ maxWidth: 1120, margin: "0 auto", padding: "96px 40px" }}>
+        <div style={{ textAlign: "center", marginBottom: 56 }}>
+          <SectionEyebrow>Rewards tiers</SectionEyebrow>
+          <h2 style={{ fontFamily: "var(--xui-font-heading)", fontWeight: 700, fontSize: 40, margin: "0 0 12px" }}>Level up as your channel grows</h2>
+          <p style={{ fontSize: 18, color: "var(--xui-content-secondary)", margin: 0 }}>Everyone starts at Bronze. Climb the tiers with points from views, watch time, and code usage.</p>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 24, alignItems: "stretch" }}>
+          {TIERS.map(tier => <TierCard key={tier.name} tier={tier} />)}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ApplySection() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [url, setUrl] = useState("");
+  const [platform, setPlatform] = useState("");
+  const [audience, setAudience] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const displayName = (name || "").trim().split(" ")[0] || "creator";
+
+  const reset = () => {
+    setSubmitted(false);
+    setName(""); setEmail(""); setUrl(""); setPlatform(""); setAudience("");
+  };
+
+  return (
+    <div id="apply" style={{ maxWidth: 1120, margin: "0 auto", padding: "96px 40px" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "0.85fr 1fr", gap: 64, alignItems: "start" }}>
+        <div style={{ position: "sticky", top: 100 }}>
+          <SectionEyebrow>Apply</SectionEyebrow>
+          <h2 style={{ fontFamily: "var(--xui-font-heading)", fontWeight: 700, fontSize: 40, margin: "0 0 16px" }}>Ready to get paid to play?</h2>
+          <p style={{ fontSize: 18, lineHeight: 1.55, color: "var(--xui-content-secondary)", margin: "0 0 28px" }}>Tell us about your channel and we'll be in touch within a few days. It takes about two minutes — no follower minimum required.</p>
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            {["Free to join, cancel anytime", "Keep 100% of your channel and content", "Twitch, YouTube, and TikTok welcome"].map(text => (
+              <div key={text} style={{ display: "flex", gap: 12, alignItems: "center" }}>
+                <Icon name="check-solid" size="20px" color="#d9ff66" />
+                <span style={{ fontSize: 16, color: "var(--xui-content-secondary)" }}>{text}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div style={{ background: "var(--xui-bg-primary)", border: "1px solid var(--xui-border-secondary)", borderRadius: 16, padding: 36, boxShadow: "var(--xui-shadow-surface)" }}>
+          {!submitted ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              <Input label="Full name" placeholder="Alex Rivera" value={name} onChangeText={setName} />
+              <Input label="Email" type="email" placeholder="you@email.com" value={email} onChangeText={setEmail} />
+              <Input label="Channel URL" placeholder="twitch.tv/yourname" value={url} onChangeText={setUrl} />
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+                <Select label="Platform" placeholder="Select" options={PLATFORM_OPTS} value={platform} onChange={setPlatform} />
+                <Select label="Audience size" placeholder="Select" options={AUDIENCE_OPTS} value={audience} onChange={setAudience} />
+              </div>
+              <div style={{ marginTop: 4 }}>
+                <Button tone="brand" size="lg" fullWidth onPress={() => setSubmitted(true)}>Apply now</Button>
+              </div>
+              <p style={{ fontSize: 13, color: "var(--xui-content-tertiary)", textAlign: "center", margin: 0 }}>By applying you agree to the Creator Program terms.</p>
+            </div>
+          ) : (
+            <div style={{ textAlign: "center", padding: "24px 8px" }}>
+              <div style={{ width: 72, height: 72, borderRadius: 999, background: "var(--xui-bg-secondary)", border: "1px solid var(--xui-border-secondary)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px", animation: "cp-float 3s ease-in-out infinite" }}>
+                <Icon name="check-solid" size="36px" color="#d9ff66" />
+              </div>
+              <h3 style={{ fontFamily: "var(--xui-font-heading)", fontWeight: 700, fontSize: 28, margin: "0 0 10px" }}>You're in the queue!</h3>
+              <p style={{ fontSize: 16, lineHeight: 1.5, color: "var(--xui-content-secondary)", margin: "0 0 24px" }}>Thanks, {displayName}. We review new creators every week — keep an eye on your inbox for next steps within 5 days.</p>
+              <Button variant="secondary" tone="mono" size="md" onPress={reset}>Submit another</Button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Faq() {
+  const [openFaq, setOpenFaq] = useState(0);
+  return (
+    <div id="faq" style={{ background: "var(--xui-bg-primary)", borderTop: "1px solid var(--xui-border-secondary)" }}>
+      <div style={{ maxWidth: 760, margin: "0 auto", padding: "96px 40px" }}>
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <SectionEyebrow>FAQ</SectionEyebrow>
+          <h2 style={{ fontFamily: "var(--xui-font-heading)", fontWeight: 700, fontSize: 40, margin: 0 }}>Questions, answered</h2>
+        </div>
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          {FAQS.map((item, i) => {
+            const isOpen = openFaq === i;
+            return (
+              <div key={item.q} style={{ background: "var(--xui-bg-secondary)", border: "1px solid var(--xui-border-secondary)", borderRadius: 12, overflow: "hidden" }}>
+                <div onClick={() => setOpenFaq(isOpen ? -1 : i)} style={{ display: "flex", alignItems: "center", gap: 16, padding: "22px 24px", cursor: "pointer", userSelect: "none" }}>
+                  <span style={{ flex: 1, fontFamily: "var(--xui-font-heading)", fontWeight: 700, fontSize: 18 }}>{item.q}</span>
+                  <Icon name={isOpen ? "minus" : "plus"} size="20px" color="var(--xui-content-brand-secondary)" />
+                </div>
+                {isOpen && <p style={{ fontSize: 16, lineHeight: 1.6, color: "var(--xui-content-secondary)", margin: 0, padding: "0 24px 24px" }}>{item.a}</p>}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Footer() {
+  return (
+    <div style={{ borderTop: "1px solid var(--xui-border-secondary)" }}>
+      <div style={{ maxWidth: 1120, margin: "0 auto", padding: "56px 40px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <img src="assets/logos/logo-full-white.svg" height="20" alt="Xsolla" />
+          <span style={{ fontSize: 14, color: "var(--xui-content-tertiary)" }}>Nova Drift Creator Program</span>
+        </div>
+        <a href="#apply"><Button tone="brand" size="md">Apply now</Button></a>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div style={{ minHeight: "100vh", background: "var(--xui-bg-secondary)", color: "var(--xui-content-primary)", fontFamily: "var(--xui-font-body)" }}>
+      <Header />
+      <Hero />
+      <HowItWorks />
+      <Tiers />
+      <ApplySection />
+      <Faq />
+      <Footer />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+<script>
+  var src = document.getElementById("app-src").textContent;
+  var out = Babel.transform(src, { presets: [["react", { runtime: "classic" }]] });
+  (0, eval)(out.code);
+</script>
+</body>
+</html>

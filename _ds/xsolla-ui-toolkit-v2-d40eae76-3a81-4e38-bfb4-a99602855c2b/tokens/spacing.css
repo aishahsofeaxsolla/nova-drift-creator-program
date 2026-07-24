@@ -1,0 +1,37 @@
+/* Xsolla UI Toolkit v2 — Spacing, radius & stroke tokens */
+
+:root {
+  /* Spacing scale */
+  --xui-space-xs: 4px;
+  --xui-space-sm: 8px;
+  --xui-space-md: 16px;
+  --xui-space-lg: 24px;
+  --xui-space-xl: 32px;
+
+  /* Semantic radii */
+  --xui-radius-button: 4px;
+  --xui-radius-input: 4px;
+  --xui-radius-card: 12px;
+  --xui-radius-context-menu: 8px;
+  --xui-radius-tag-sm: 4px;
+  --xui-radius-tag-md: 6px;
+  --xui-radius-tag-lg: 8px;
+  --xui-radius-avatar-sm: 4px;
+  --xui-radius-avatar-lg: 8px;
+  --xui-radius-circle: 999px;
+
+  /* Primitive radius scale (Figma Scale/radius) */
+  --xui-radius-25: 2px;
+  --xui-radius-50: 4px;
+  --xui-radius-75: 6px;
+  --xui-radius-100: 8px;
+  --xui-radius-150: 12px;
+  --xui-radius-200: 16px;
+  --xui-radius-250: 20px;
+  --xui-radius-300: 24px;
+
+  /* Stroke widths */
+  --xui-stroke-1: 1px;
+  --xui-stroke-2: 2px;
+  --xui-stroke-3: 3px;
+}
